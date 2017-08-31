@@ -17,12 +17,12 @@ $file1 = json_decode($file, true);
 </h3>
 <form action="" method="POST">
     <?php foreach ($file1 as $k => $v) { ?>
-    <fieldset>
-        <legend><?= $file1[$k]["q$k"] ?></legend>
-        <label><input name="q<?=$k?>" value="0" type="radio"> <?= $file1[$k]['answer']['a0'] ?></label>
-        <label><input name="q<?=$k?>" value="1" type="radio"> <?= $file1[$k]['answer']['a1'] ?></label>
-        <label><input name="q<?=$k?>" value="2" type="radio"> <?= $file1[$k]['answer']['a2'] ?></label>
-    </fieldset>
+        <fieldset>
+            <legend><?= $file1[$k]["q$k"] ?></legend>
+            <label><input name="q<?= $k ?>" value="0" type="radio"> <?= $file1[$k]['answer']['a0'] ?></label>
+            <label><input name="q<?= $k ?>" value="1" type="radio"> <?= $file1[$k]['answer']['a1'] ?></label>
+            <label><input name="q<?= $k ?>" value="2" type="radio"> <?= $file1[$k]['answer']['a2'] ?></label>
+        </fieldset>
     <? } ?>
     <input value="Отправить" type="submit">
 </form>
@@ -30,10 +30,12 @@ $file1 = json_decode($file, true);
 </html>
 <?php
 $priem = $_POST;
-foreach ($file1 as $key => $value){
-    if ($file1[$key]['correct'] == $priem["q$key"]) {
-        echo "$key -- Верно<br>";
-    }else echo "$key -- Неверно<br>";
+if (!empty($priem)){
+    foreach ($file1 as $key => $value) {
+        if ($file1[$key]['correct'] == $priem["q$key"]) {
+            echo "$key -- Верно<br>";
+        } else echo "$key -- Неверно<br>";
+    }
 }
 
 

@@ -18,7 +18,7 @@ $file1 = json_decode($file, true);
 <form action="" method="POST">
     <?php foreach ($file1 as $k => $v) { ?>
         <fieldset>
-            <legend><?= $file1[$k]["q$k"] ?></legend>
+            <legend><?="$k.".$file1[$k]["q$k"] ?></legend>
             <label><input name="q<?= $k ?>" value="0" type="radio"> <?= $file1[$k]['answer']['a0'] ?></label>
             <label><input name="q<?= $k ?>" value="1" type="radio"> <?= $file1[$k]['answer']['a1'] ?></label>
             <label><input name="q<?= $k ?>" value="2" type="radio"> <?= $file1[$k]['answer']['a2'] ?></label>

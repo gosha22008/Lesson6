@@ -11,6 +11,8 @@ $tests = array_reverse($tests);
 $kol = count($tests);
 unset($tests[$kol - 1], $tests[$kol - 2]);
 $tests = array_reverse($tests);
+//echo '<pre>';
+//print_r($tests);
 ?>
 <body>
 <h3>
@@ -18,10 +20,9 @@ $tests = array_reverse($tests);
 </h3>
 <div>
     <form action="test.php" method="get">
-        <? foreach ($tests as $k => $v) {
-        ++$k; ?> <h3>
-        <input type="submit" name="<?="$k"?>" value="<?="$v"?>" style="font-size: 25px"> <br></h3>
-        <?} ?>
+        <?php foreach ($tests as $k => $v) { ?>
+            <h3><input type="submit" name="<?= "$k" ?>" value="<?= $v ?>" style="font-size: 25px"> <br></h3>
+        <?php } ?>
     </form>
 </div>
 </body>

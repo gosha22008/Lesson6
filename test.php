@@ -7,7 +7,7 @@
 <?php
 $aa = $_GET;
 $k = key($aa);
-$file = file_get_contents("DownloadedTests\\" . $_GET[$k]);
+$file = file_get_contents(__DIR__.'/DownloadedTests/'. $_GET[$k]);
 $file1 = json_decode($file, true);
 ?>
 <body>

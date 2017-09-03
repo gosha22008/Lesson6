@@ -13,11 +13,17 @@
 </form>
 </body>
 <?php
+$json = 'application/json';
+$octetStream = 'application/octet-stream';
 if (isset($_FILES['myfile']) and !empty($_FILES['myfile']['name'])) {
-    if ($_FILES['myfile']['error'] == 0 and move_uploaded_file($_FILES['myfile']['tmp_name'], __DIR__.'/DownloadedTests/' . $_FILES['myfile']['name'])) {
-        echo 'Файл загружен';
+    if ($_FILES['myfile']['type'] == $json or $_FILES['myfile']['type'] == $octetStream) {
+        if ($_FILES['myfile']['error'] == 0 and move_uploaded_file($_FILES['myfile']['tmp_name'], __DIR__ . '/DownloadedTests/' . $_FILES['myfile']['name'])) {
+            echo 'Файл загружен';
+        } else {
+            echo 'Ошибка! Файл не загружен !';
+        }
     } else {
-        echo 'Ошибка! Файл не загружен !';
+        echo 'Неверное расширение! Подходят только .json';
     }
 }
 ?>

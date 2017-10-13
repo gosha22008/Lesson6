@@ -30,7 +30,7 @@ $file1 = json_decode($file, true);
 </html>
 <?php
 $priem = $_POST;
-if (!empty($priem)) {
+if (isset($priem['q0']) and isset($priem['q1']) and isset($priem['q2'])) {
     foreach ($file1 as $key => $value) {
         if ($file1[$key]['correct'] == $priem["q$key"]) {
             echo "$key -- Верно<br>";

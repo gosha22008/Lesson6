@@ -19,7 +19,7 @@ $file1 = json_decode($file, true);
     <?php
     $i = 0;
     foreach ($file1 as $k => $v) {
-        if (isset($file1[$k]["q$k"]) and isset($file1[$k]['answer']["a$k"])) { ?>
+        if (isset($file1[$k]["q$k"]) and isset($file1[$k]['answer']["a0"])) { ?>
             <fieldset>
                 <legend><?= "$k." . $file1[$k]["q$k"] ?></legend>
                 <label><input name="q<?= $k ?>" value="0" type="radio"> <?= $file1[$k]['answer']['a0'] ?></label>
@@ -47,4 +47,5 @@ if (isset($priem['q0']) and isset($priem['q1']) and isset($priem['q2'])) {
         } else echo "$key -- Неверно<br>";
     }
 }
+
 ?>

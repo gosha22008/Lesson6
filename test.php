@@ -7,8 +7,11 @@
 <?php
 $aa = $_GET;
 $k = key($aa);
-$file = file_get_contents(__DIR__ . '/DownloadedTests/' . $_GET[$k]);
-$file1 = json_decode($file, true);
+if (isset ($_GET[$k])) {
+    $file = file_get_contents(__DIR__ . '/DownloadedTests/' . $_GET[$k]);
+    $file1 = json_decode($file, true);
+} else echo 'ошибка';
+
 ?>
 <body>
 <h3>
@@ -22,9 +25,18 @@ $file1 = json_decode($file, true);
         if (isset($file1[$k]["q$k"]) and isset($file1[$k]['answer']["a0"])) { ?>
             <fieldset>
                 <legend><?= "$k." . $file1[$k]["q$k"] ?></legend>
-                <label><input name="q<?= $k ?>" value="0" type="radio"> <?= $file1[$k]['answer']['a0'] ?></label>
-                <label><input name="q<?= $k ?>" value="1" type="radio"> <?= $file1[$k]['answer']['a1'] ?></label>
-                <label><input name="q<?= $k ?>" value="2" type="radio"> <?= $file1[$k]['answer']['a2'] ?></label>
+                <?php
+                $j = 0;
+                while (isset($file1[$k]['answer']["a$j"])) { ?>
+                <label><input name="q<?= $k ?>" value="<?=$j ?>" type="radio">
+                    <?= $file1[$k]['answer']["a$j"] ?></label>
+                <?php $j ++; } ?>
+                <!--                <label><input name="q--><? //= $k ?><!--" value="0" type="radio"> -->
+                <? //= $file1[$k]['answer']['a0'] ?><!--</label>-->
+                <!--                <label><input name="q--><? //= $k ?><!--" value="1" type="radio"> -->
+                <? //= $file1[$k]['answer']['a1'] ?><!--</label>-->
+                <!--                <label><input name="q--><? //= $k ?><!--" value="2" type="radio"> -->
+                <? //= $file1[$k]['answer']['a2'] ?><!--</label>-->
             </fieldset>
             <?php
         } else {
